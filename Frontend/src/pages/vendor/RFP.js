@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 export default function RFP() {
   const [rfps, setRFPs] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchRFPData = async () => {
       try {
@@ -10,6 +13,10 @@ export default function RFP() {
         const vendorCatRes = await axios.get(
           `${process.env.REACT_APP_API_URL}/Vendor/${sid}`
         );
+
+        const documentVerifiedValues = vendorCatRes.data.documentVerified.split('|');
+        const isAnyValueFalse = documentVerifiedValues.every(value => value === "True");
+        if(!isAnyValueFalse) navigate('/vendor/upload-document');
 
         const catId = vendorCatRes.data.vendorCategory.id;
         const rfpCatRes = await axios.get(

@@ -30,6 +30,8 @@ export default function AdminDashboard() {
         { text: "Create Vendor", link: "create-vendor" },
         { text: "All Vendor Category", link: "vendor-category" },
         { text: "Add Vendor Category", link: "add-vendor-category" },
+        { text: "Document List", link: "document" },
+        { text: "Add Document", link: "add-document" },
       ],
 
     },
@@ -58,9 +60,9 @@ export default function AdminDashboard() {
       icon: "ri ri-product-hunt-line  ",
       link: "#",
       subItems: [
-        { text: "All Product", link: "products" },
+        { text: "Product Category", link: "product-category" },
         { text: "Create Product", link: "create-product" },
-        { text: "Create Product Category", link: "product-category" },
+        { text: "Create Product Category", link: "add-product-category" },
       ],
       bgColor: "bg-cyan-600", 
     },
@@ -77,13 +79,12 @@ export default function AdminDashboard() {
     },
     ///////////
 
-
     {
-      text: "Document Verification",
+      text: "Vendor Verification",
       icon: "ri ri-verified-badge-fill",
       link: "#",
       subItems: [
-        { text: "All Documents", link: "document-verfication" },
+        { text: "Vendor", link: "vendor-verfication" },
       ],
       bgColor: "bg-cyan-800", 
     },

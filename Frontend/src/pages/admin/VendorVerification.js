@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link , Route, Router, Routes} from "react-router-dom";
-import DocumentDetails from "./DocumentDetails";
 
-export default function Documents() {
-  const [documents, setDocuments] = useState([]);
+export default function VendorVerification() {
+  const [vendors, setVendors] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(3);
 
   useEffect(() => {
-    // Fetch document data when the component mounts
-    fetchDocumentData();
+    // Fetch Vendors data when the component mounts
+    fetchVendorsData();
   }, []);
 
-  const fetchDocumentData = async () => {
+  const fetchVendorsData = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/Document/All`);
-      setDocuments(response.data);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/Vendor/All`);
+      setVendors(response.data);
     } catch (error) {
-      console.error("Error fetching Document data:", error);
+      console.error("Error fetching Vendor data:", error);
     }
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = documents.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = vendors.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -33,7 +32,7 @@ export default function Documents() {
       <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-8">
         <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
           <div className="flex text-2xl font-bold text-gray-500 mb-4 justify-center items-center">
-            <h2>Documents</h2>
+            <h2>Vendors</h2>
           </div>
 
       <table className="min-w-full">
@@ -43,10 +42,10 @@ export default function Documents() {
                   Sr. No
                 </th>
                 <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                  Document Name
+                Vendor Name
                 </th>
                 <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                  Status
+                Document Comment
                 </th>
             <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
               Actions
@@ -54,8 +53,8 @@ export default function Documents() {
           </tr>
         </thead>
         <tbody className="bg-white">
-          {currentItems.map((document, index) => (
-            <tr key={document.id}>
+          {currentItems.map((vendor, index) => (
+            <tr key={vendor.id}>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <div className="text-sm leading-5 text-blue-900">
                       {index + 1}
@@ -63,18 +62,18 @@ export default function Documents() {
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <div className="text-sm leading-5 text-blue-900">
-                      {document.name}
+                      {vendor.name}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <div className="text-sm leading-5 text-blue-900">
-                      {document.status}
+                      {vendor.documentComment}
                     </div>
                   </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                 <div className="text-sm leading-5 text-blue-900">
                     
-                  <Link to={`/document-verfication/${document.id}`}>View</Link>
+                  <Link to={`/admin/document-verification/${vendor.id}`}>View</Link>
                 </div>
               </td>
             </tr>
@@ -84,7 +83,7 @@ export default function Documents() {
       </div>
       </div>
       <div className="flex justify-center mt-4">
-        {Array.from({ length: Math.ceil(documents.length / itemsPerPage) }).map(
+        {Array.from({ length: Math.ceil(vendors.length / itemsPerPage) }).map(
           (_, index) => (
             <button
               key={index}

@@ -27,14 +27,17 @@ import AdminProfile from "./pages/admin/AdminProfile";
 import Product from "./pages/admin/Product";
 import AddProduct from "./pages/admin/AddProduct";
 import AddProductCategory from "./pages/admin/AddProductCategory";
-import DocVerification from "./pages/admin/DocVerification";
+import VendorVerification from "./pages/admin/VendorVerification";
 import DocumentDetails from "./pages/admin/DocumentDetails";
+import ProductCategory from "./pages/admin/ProductCategory";
+import AddDocument from "./pages/admin/AddDocument";
+import Documents from "./pages/admin/Documents"
 
 //Vendor
 import VendorDash from "./pages/vendor/VendorDash";
 import RFP from "./pages/vendor/RFP";
 import VendorProfile from "./pages/vendor/VendorProfile";
-import DocumentUpload from "./pages/vendor/DocumnetUpload";
+import UploadDocument from "./pages/vendor/UploadDocument";
 
 //ProjectHead
 import ProjectHeadDash from "./pages/projecthead/ProjectHeadDash";
@@ -60,6 +63,8 @@ const App = () => {
           <Route path="create-project-head" element={<AddProjectHead />} />
           <Route path="add-vendor-category" element={<AddVendorCategory />} />
           <Route path="vendor-category" element={<VendorCategory />} />
+          <Route path="document" element={<Documents/>}/>
+          <Route path="add-document" element={<AddDocument/>}/>
           <Route path="projects" element={<Project />} />
           <Route path="create-project" element={<AddProject />} />
           <Route path="rfp" element={<RFPA />} />
@@ -67,8 +72,9 @@ const App = () => {
           <Route path="profile" element={<AdminProfile/>}/>
           <Route path="products" element={<Product/>}/>
           <Route path="create-product" element={<AddProduct/>}/>
-          <Route path="product-category" element={<AddProductCategory/>}/>
-          <Route path="document-verfication" element={<DocVerification/>}/>
+          <Route path="add-product-category" element={<AddProductCategory/>}/>
+          <Route path="product-category" element={<ProductCategory/>}/>
+          <Route path="vendor-verfication" element={<VendorVerification/>}/>
           <Route path="document-verification/:id" component={DocumentDetails} />
         </Route>
 
@@ -77,7 +83,7 @@ const App = () => {
           <Route path="dashboard" index element={<VendorDash />} />
           <Route path="profile" element={<VendorProfile />} />
           <Route path="rfp" index element={<RFP />} />
-          <Route path="upload-document" index element={<DocumentUpload/>} />
+          <Route path="upload-document" index element={<UploadDocument />} />
         </Route>
 
         <Route path="/projecthead" element={<ProjectHeadDashboard />}>

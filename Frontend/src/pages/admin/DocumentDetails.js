@@ -9,11 +9,11 @@ const DocumentDetails = ({ match }) => {
     const fetchDocumentDetails = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/Document/${match.params.id}`
+          `${process.env.REACT_APP_API_URL}/Vendor/${match.params.id}`
         );
         setDocumentDetails(response.data);
       } catch (error) {
-        console.error("Error fetching Document details:", error);
+        console.error("Error fetching Vendor details:", error);
       }
     };
 

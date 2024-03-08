@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function VendorCategory() {
-  const [vendorCategories, setVendorCategories] = useState([]);
+export default function ProductCategory() {
+  const [productCategories, setProductCategories] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(3);
 
   useEffect(() => {
-    // Fetch vendor data when the component mounts
-    const fetchVendorCategoryData = async () => {
+    // Fetch product category data when the component mounts
+    const fetchProductCategoryData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/VendorCategory/All`
+          `${process.env.REACT_APP_API_URL}/ProductCategory/All`
         );
 
-        setVendorCategories(response.data);
+        setProductCategories(response.data);
         setFilteredCategories(response.data);
       } catch (error) {
-        console.error("Error fetching vendor data:", error);
+        console.error("Error fetching product category data:", error);
       }
     };
 
-    fetchVendorCategoryData();
+    fetchProductCategoryData();
   }, []);
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -31,12 +31,12 @@ export default function VendorCategory() {
 
   // Handle search query change
   useEffect(() => {
-    const filtered = vendorCategories.filter((category) =>
+    const filtered = productCategories.filter((category) =>
       category.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredCategories(filtered);
     setCurrentPage(1); // Reset current page when search query changes
-  }, [searchQuery, vendorCategories]);
+  }, [searchQuery, productCategories]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -45,7 +45,7 @@ export default function VendorCategory() {
       <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-8">
         <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
           <div className="flex text-2xl font-bold text-gray-500 mb-4 justify-center items-center">
-            <h2>Vendor Category</h2>
+            <h2>Product Category</h2>
           </div>
 
           {/* Input field for filtering */}
@@ -72,7 +72,11 @@ export default function VendorCategory() {
                   Description
                 </th>
                 <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                  Document List
+                  Parent Category ID
+                </th>
+               
+                <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                  Parent Category
                 </th>
               </tr>
             </thead>
@@ -96,11 +100,14 @@ export default function VendorCategory() {
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <div className="text-sm leading-5 text-blue-900">
-                      {cat.documentList.split("|").map((doc) => (
-                        <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
-                          {doc}
-                        </span>
-                      ))}
+                      {cat.parentCategoryId}
+                    </div>
+                  </td>
+                   
+                  <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                    <div className="text-sm leading-5 text-blue-900">
+                      {/* Assuming parentCategory is an object with name property */}
+                      {cat.parentCategory && cat.parentCategory.name}
                     </div>
                   </td>
                 </tr>
