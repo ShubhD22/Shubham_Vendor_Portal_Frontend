@@ -75,7 +75,7 @@ const App = () => {
           <Route path="add-product-category" element={<AddProductCategory/>}/>
           <Route path="product-category" element={<ProductCategory/>}/>
           <Route path="vendor-verfication" element={<VendorVerification/>}/>
-          <Route path="document-verification/:id" component={DocumentDetails} />
+          <Route path="document-verification/:id" element={<DocumentDetails/>} />
         </Route>
 
         <Route path="/vendor" element={<VendorDashboard />}>
