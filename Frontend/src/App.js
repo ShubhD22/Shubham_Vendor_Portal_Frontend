@@ -76,6 +76,7 @@ const App = () => {
           <Route path="product-category" element={<ProductCategory/>}/>
           <Route path="vendor-verfication" element={<VendorVerification/>}/>
           <Route path="document-verification/:id" component={DocumentDetails} />
+          
         </Route>
 
         <Route path="/vendor" element={<VendorDashboard />}>
