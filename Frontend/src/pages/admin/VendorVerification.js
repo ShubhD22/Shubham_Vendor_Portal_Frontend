@@ -67,7 +67,7 @@ export default function VendorVerification() {
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <div className="text-sm leading-5 text-blue-900">
-                      {vendor.documentComment}
+                      {vendor.isVerified ? "Approved":"Upload required Documents"}
                     </div>
                   </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">

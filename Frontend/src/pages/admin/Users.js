@@ -179,20 +179,11 @@ export default function Users() {
                   </td>
                   <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <div class="text-sm leading-5 text-blue-900">
-                      {vendor.documentPaths
-                        .split(";")
-                        .map((documentPath, index) =>
-                          documentPath !== "" ? (
-                            <li key={index}>
-                              <a
-                                key={index}
-                                href={documentPath}
-                                className=""
-                              >{`Doc ${index}`}</a>
-                            </li>
-                          ) : (
-                            ""
-                          )
+                      {vendor.documentsUploadList
+                        .map((item, index) =>
+                            <p key={index}>
+                              {item.documentName}
+                            </p>
                         )}
                     </div>
                   </td>

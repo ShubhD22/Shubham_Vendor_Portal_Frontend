@@ -63,48 +63,50 @@ export default function AddProject() {
             <h2>Create Project</h2>
           </div>
           
-          <div class="mb-6">
-            <label
-              for="name"
-              class="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Name
-            </label>
+          <div className="mb-6 relative">
             <input
               type="text"
               id="name"
               name="name"
               value={projectData.name}
               onChange={handleChange}
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
               required
             />
+            <label
+              htmlFor="name"
+              className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+            >
+              Name
+            </label>
           </div>
 
-          <div class="mb-6">
-            <label
-              for="projectHeadId"
-              class="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Select an option
-            </label>
-            <select
-              id="projectHeadId"
-              name="projectHeadId"
-              value={projectData.projectHeadId}
-              onChange={handleChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            >
-              <option value="" disabled>
-                Choose a Project Head
-              </option>
-              {projectHead.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
+          <div className="mb-6 relative">
+  <label
+    htmlFor="projectHeadId"
+    className="block mb-2 text-sm font-medium text-gray-900"
+  >
+    Select an option
+  </label>
+  <select
+    id="projectHeadId"
+    name="projectHeadId"
+    value={projectData.projectHeadId}
+    onChange={handleChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+  >
+    <option value="" disabled>
+      Choose a Project Head
+    </option>
+    {projectHead.map((item) => (
+      <option key={item.id} value={item.id}>
+        {item.name}
+      </option>
+    ))}
+  </select>
+</div>
+
           <div class="mb-6">
             <div class="flex">
               <div class="flex items-center me-4">
@@ -158,23 +160,25 @@ export default function AddProject() {
             </div>
           </div>
 
-          <div class="mb-6">
-            <label
-              for="description"
-              class="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Description
-            </label>
-            <input
-              type="text"
-              id="description"
-              name="description"
-              value={projectData.description}
-              onChange={handleChange}
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              required
-            />
-          </div>
+          <div className="mb-6 relative">
+  <input
+    type="text"
+    id="description"
+    name="description"
+    value={projectData.description}
+    onChange={handleChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="description"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Description
+  </label>
+</div>
+
 
           <button
             type="submit"

@@ -80,15 +80,15 @@ const App = () => {
 
         <Route path="/vendor" element={<VendorDashboard />}>
           <Route index element={<VendorDash />} />
-          <Route path="dashboard" index element={<VendorDash />} />
+          <Route path="dashboard"  element={<VendorDash />} />
           <Route path="profile" element={<VendorProfile />} />
-          <Route path="rfp" index element={<RFP />} />
-          <Route path="upload-document" index element={<UploadDocument />} />
+          <Route path="rfp"  element={<RFP />} />
+          <Route path="upload-document"  element={<UploadDocument />} />
         </Route>
 
         <Route path="/projecthead" element={<ProjectHeadDashboard />}>
           <Route index element={<ProjectHeadDash />} />
-          <Route path="dashboard" index element={<ProjectHeadDash />} />
+          <Route path="dashboard"  element={<ProjectHeadDash />} />
           <Route path="profile" element={<ProjectHeadProfile />} />
           <Route path="assigned-project" element={<AssignedProject />} />
         </Route>

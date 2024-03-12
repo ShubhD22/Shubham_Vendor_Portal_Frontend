@@ -5,7 +5,7 @@ export default function AddVendorCategory() {
   const [vendorCategoryData, setVendorCategoryData] = useState({
     name: "",
     description: "",
-    documentList: "",
+    documentList: [],
   });
 
   const [docs, setDocs] = useState([]);
@@ -51,8 +51,10 @@ export default function AddVendorCategory() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      var DocList = chkdocs.join("|");
-      vendorCategoryData.documentList = DocList;
+      var DocList = chkdocs.join(",");
+      var arr = DocList.split(",");
+      console.log(arr);
+      vendorCategoryData.documentList = arr;
       console.log(vendorCategoryData);
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/VendorCategory/Add`,
@@ -123,8 +125,8 @@ export default function AddVendorCategory() {
 {docs.map((doc, index) => (
     <li key={index} class="w-full border-b border-gray-200 border-b-0 border-r">
         <div class="flex items-center ps-3">
-            <input id={doc.name} type="checkbox" value={doc.name}  onChange={() => handleCheckboxChange(doc.name)} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"/>
-            <label for={doc.name} class="w-full py-3 ms-2 text-sm font-medium text-gray-900">{doc.name}</label>
+            <input id={doc.id} type="checkbox" value={doc.name}  onChange={() => handleCheckboxChange(doc.id)} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"/>
+            <label for={doc.id} class="w-full py-3 ms-2 text-sm font-medium text-gray-900">{doc.name}</label>
         </div>
     </li>))}
 </ul>

@@ -72,95 +72,97 @@ function Test() {
             <h2>Create Product</h2>
           </div>
 
-          <div className="mb-6">
-            <label htmlFor="Name" className="block mb-2 text-sm font-medium text-gray-900">
-              Product Name
-            </label>
-            <input
-              type="text"
-              id="Name"
-              name="Name"
-              value={formData.Name}
-              onChange={handleOnChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              required
-            />
-          </div>
+          <div className="mb-6 relative">
+  <input
+    type="text"
+    id="Name"
+    name="Name"
+    value={formData.Name}
+    onChange={handleOnChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="Name"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Product Name
+  </label>
+</div>
 
-          <div className="mb-6">
-            <label htmlFor="FormFile" className="block mb-2 text-sm font-medium text-gray-900">
-              Product Image
-            </label>
-            <input
-              type="file"
-              id="ImageFile"
-              name="FormFile"
-              onChange={handleOnChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              required
-            />
-          </div>
+          <div className="mb-6 relative">
+  <label htmlFor="ImageFile" className="block mb-2 text-sm font-medium text-gray-900">
+    Product Image
+  </label>
+  <input
+    type="file"
+    id="ImageFile"
+    name="FormFile"
+    onChange={handleOnChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+    required
+  />
+</div>
 
-          <div className="mb-6">
-            <label htmlFor="ShortDescription" className="block mb-2 text-sm font-medium text-gray-900">
-              ShortDescription
-            </label>
-            <input
-              type="text"
-              id="ShortDescription"
-              name="ShortDescription"
-              value={formData.ShortDescription}
-              onChange={handleOnChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="ShortDescription"
-            />
-          </div>
 
           <div className="flex">
-            <div className="mb-6 mr-4">
-              <label htmlFor="UnitType" className="block mb-2 text-sm font-medium text-gray-900">
-                Unit Type
-              </label>
-              <input
-                type="text"
-                id="unitType"
-                name="UnitType"
-                value={formData.UnitType}
-                onChange={handleOnChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="unit"
-              />
-            </div>
+          <div className="mb-6 relative">
+  <input
+    type="text"
+    id="unitType"
+    name="UnitType"
+    value={formData.UnitType}
+    onChange={handleOnChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="unitType"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Unit Type
+  </label>
+</div>
 
-            <div className="mb-6">
-              <label htmlFor="Size" className="block mb-2 text-sm font-medium text-gray-900">
-                Size
-              </label>
-              <input
-                type="text"
-                id="Size"
-                name="Size"
-                value={formData.Size}
-                onChange={handleOnChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Size"
-              />
-            </div>
-          </div>
+<div className="mb-6 relative">
+  <input
+    type="text"
+    id="Size"
+    name="Size"
+    value={formData.Size}
+    onChange={handleOnChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="Size"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Size
+  </label>
+</div>
+        </div>
 
-          <div className="mb-6">
-            <label htmlFor="LongDescription" className="block mb-2 text-sm font-medium text-gray-900">
-              LongDescription
-            </label>
-            <textarea
-              id="LongDescription"
-              name="LongDescription"
-              value={formData.LongDescription}
-              onChange={handleOnChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="LongDescription"
-            />
-          </div>
+        <div className="mb-6 relative">
+  <textarea
+    id="LongDescription"
+    name="LongDescription"
+    value={formData.LongDescription}
+    onChange={handleOnChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    placeholder=" "
+  />
+  <label
+    htmlFor="LongDescription"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    LongDescription
+  </label>
+</div>
+
 
           <div className="mb-6">
             <label htmlFor="ProductCategory" className="block mb-2 text-sm font-medium text-gray-900">
@@ -208,20 +210,25 @@ function Test() {
             </select>
           </div>
 
-          <div className="mb-6">
-            <label htmlFor="Specification" className="block mb-2 text-sm font-medium text-gray-900">
-              Specification
-            </label>
-            <input
-              type="text"
-              id="Specification"
-              name="Specification"
-              value={formData.Specification}
-              onChange={handleOnChange}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="product name"
-            />
-          </div>
+          <div className="mb-6 relative">
+  <input
+    type="text"
+    id="Specification"
+    name="Specification"
+    value={formData.Specification}
+    onChange={handleOnChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="Specification"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Specification
+  </label>
+</div>
+
 
           <button
             type="submit"

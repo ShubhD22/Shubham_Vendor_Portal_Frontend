@@ -48,7 +48,7 @@ export default function VendorCategory() {
             <h2>Vendor Category</h2>
           </div>
 
-          {/* Input field for filtering */}
+          
           <div className="mt-4 searchFilter">
             <label className="mr-2">Search by Name:</label>
             <input
@@ -96,11 +96,11 @@ export default function VendorCategory() {
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <div className="text-sm leading-5 text-blue-900">
-                      {cat.documentList.split("|").map((doc) => (
+                      {/* {cat.documentList.split("|").map((doc) => (
                         <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">
                           {doc}
                         </span>
-                      ))}
+                      ))} */}
                     </div>
                   </td>
                 </tr>

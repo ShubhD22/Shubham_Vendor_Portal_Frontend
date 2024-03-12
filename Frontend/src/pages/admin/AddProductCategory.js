@@ -45,23 +45,25 @@ export default function AddProductCategory() {
           <div className="flex text-2xl font-bold text-gray-500 mb-4 justify-center items-center">
             <h2>Create Product Category</h2>
           </div>
-          <div className="mb-6">
-            <label
-              htmlFor="name"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Product Category Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={productCategoryData.name}
-              onChange={handleChange}
-              className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              required
-            />
-          </div>
+          <div className="mb-6 relative">
+  <input
+    type="text"
+    id="name"
+    name="name"
+    value={productCategoryData.name}
+    onChange={handleChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="name"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Product Category Name
+  </label>
+</div>
+
 
           <div className="mb-6">
             <label
@@ -80,39 +82,44 @@ export default function AddProductCategory() {
             />
           </div>
 
-          <div className="mb-6">
-            <label
-              htmlFor="parentCategoryId"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Parent Category name
-            </label>
-            <input
-              type="text"
-              id="parentCategory"
-              name="parentCategory"
-              value={productCategoryData.parentCategory.name}
-              onChange={handleChange}
-              className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            />
-          </div>
+          <div className="mb-6 relative">
+  <input
+    type="text"
+    id="parentCategory"
+    name="parentCategory"
+    value={productCategoryData.parentCategory.name}
+    onChange={handleChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="parentCategory"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Parent Category name
+  </label>
+</div>
 
-          <div className="mb-6">
-            <label
-              htmlFor="description"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Description
-            </label>
-            <input
-              type="text"
-              id="description"
-              name="description"
-              value={productCategoryData.description}
-              onChange={handleChange}
-              className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            />
-          </div>
+<div className="mb-6 relative">
+  <input
+    type="text"
+    id="description"
+    name="description"
+    value={productCategoryData.description}
+    onChange={handleChange}
+    className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+    placeholder=" "
+    required
+  />
+  <label
+    htmlFor="description"
+    className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+  >
+    Description
+  </label>
+</div>
+
 
           <div className="mb-6">
             <label

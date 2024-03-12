@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 
 const DocumentDetails = () => {
   const [vendorDetails, setVendorDetails] = useState(null);
+  const [rejectId,setRejectId] = useState("");
+  const [display,setDisplay] = useState("none");
+  const [rComment,setComment] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,13 +22,68 @@ const DocumentDetails = () => {
     };
 
     fetchVendorDetails();
+    setDisplay("none");
   }, [id]);
+
+
+  const handleApprove = async (event)=>{
+    const id = event.target.getAttribute('data-key');
+    // alert(id)
+;    
+    try{
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/Vendor/DocVerify`,{
+        'id':id,
+        documentVerified:true,
+        comment:'Approved'
+      });
+      if(res.status == 200){
+        alert("Document Approve!!");
+      }
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
+  const handleReject = (event)=>{
+    const id = event.target.getAttribute('data-key');
+    // alert(id)
+;    
+    setRejectId(id)
+;
+    setDisplay("grid");
+  }
+
+  const rejectCancel = ()=>{
+    setDisplay("none");
+  }
+
+  const rejectComment = async (event)=>{
+    alert(rejectId);   
+    console.log(rComment);
+    try{
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/Vendor/DocVerify`,{
+        'id':rejectId,
+        documentVerified:false,
+        comment:rComment
+      });
+      if(res.status == 200){
+        alert("Document Rejected !!");
+      }
+    }
+    catch(error){
+      console.log(error);
+    }
+    
+    setDisplay("none");
+  }
 
   const openDocument = (path) => {
     window.open(path, "_blank");
   };
 
   return (
+    <>
     <div className="container mx-auto my-8">
       {vendorDetails ? (
         <>
@@ -46,13 +104,16 @@ const DocumentDetails = () => {
             <strong>Phone Number:</strong> {vendorDetails.phoneNumber}
           </p>
 
-          {/* Display documents in a table */}
+        
           <h2 className="text-2xl font-bold mt-8 mb-4">Document Details</h2>
           <table className="min-w-full">
             <thead>
               <tr>
                 <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
                   Document
+                </th>
+                <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
+                  View
                 </th>
                 <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
                   Status
@@ -63,33 +124,30 @@ const DocumentDetails = () => {
               </tr>
             </thead>
             <tbody>
-              {vendorDetails.vendorCategory &&
-              vendorDetails.vendorCategory.documentList &&
-              vendorDetails.documentVerified &&
-              vendorDetails.documentPaths ? (
-                vendorDetails.vendorCategory.documentList
-                  .split("|")
+              {
+
+              vendorDetails.documentsUploadList ? (
+                vendorDetails.documentsUploadList 
                   .map((document, index) => (
                     <tr key={index}>
                       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                        {document}
+                        {document.documentName}
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                        {vendorDetails.documentVerified.split("|")[index] || "N/A"}
+                        {
+                          document.documentPath==null ?
+                          "not uploaded the document"
+                          :
+                          <a href={document.documentPath}>{document.documentName}</a>
+                        }
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                        {vendorDetails.documentPaths.split("|")[index] ? (
-                          <a
-                            href="#"
-                            onClick={() => openDocument(vendorDetails.documentPaths.split("|")[index])}
-                            className="text-blue-500"
-                          >
-                            View
-                          </a>
-                        ) : (
-                          "N/A"
-                        )}
+                        {document.isVerified ? "True":"False"}
                       </td>
+                      <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <button data-key={document.id} onClick={handleApprove} className="bg-green-400 py-[3px] px-[5px]">Approve</button>
+                        <button data-key={document.id} onClick={handleReject} className="ml-[10px] bg-red-400 py-[3px] px-[5px]">Reject</button>
+                      </td>                      
                     </tr>
                   ))
               ) : (
@@ -106,6 +164,17 @@ const DocumentDetails = () => {
         <p>Loading vendor details...</p>
       )}
     </div>
+
+      <div style={{'display':display}} className="absolute top-[480px] right-[430px] grid grid-rows-2 bg-gray-500 w-[400px] h-[120px] p-[20px]">
+        <input type="text" onClick={(event)=>{setComment(event.target.value)}} placeholder="Add comment here" className="w-full h-[30px] border border-solid border-black border-2 pl-2"/>
+        <div className="flex items-center justify-center">
+        <button onClick={rejectComment} className=" bg-red-400 w-[180px] h-[30px]">Reject</button>
+        <button onClick={rejectCancel} className=" bg-red-400 w-[180px] h-[30px] ml-[5px]">Cancel</button>
+        </div>
+      </div>
+
+    </>
+
   );
 };
 
