@@ -93,6 +93,7 @@ function UploadDocument(){
                             docs && docs.length > 0 ?
                             docs.map((item,index)=>{
                                 return(
+                                    item.documentPath == null && 
                                     <tr>
                                         <td className="border border-slate-300  font-serif font-bold text-left pl-1 pr-1 py-1">
                                             {item.documentName}

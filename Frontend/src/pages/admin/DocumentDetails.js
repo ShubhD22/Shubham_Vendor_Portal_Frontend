@@ -108,8 +108,8 @@ const DocumentDetails = () => {
           </p>
 
         
-          <h2 className="text-2xl font-bold mt-8 mb-4 underline text-cyan-600">Document Details</h2>
-          <table className="min-w-full">
+          <h2 className="text-2xl font-bold mt-8 mb-4 underline text-cyan-600 ">Document Details</h2>
+          <table className="min-w-full border-2 border-blue-500 p-4 ">
             <thead>
               <tr>
                 <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
@@ -148,8 +148,8 @@ const DocumentDetails = () => {
                         {document.isVerified ? "True":"False"}
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                        <button data-key={document.id} onClick={handleApprove} className="bg-green-400 py-[3px] px-[5px]">Approve</button>
-                        <button data-key={document.id} onClick={handleReject} className="ml-[10px] bg-red-400 py-[3px] px-[5px]">Reject</button>
+                        <button data-key={document.id} onClick={handleApprove} className="bg-cyan-400 py-[3px] px-[5px]  rounded-[10px] border border-solid border-black p-2">Approve</button>
+                        <button data-key={document.id} onClick={handleReject} className="ml-[10px] bg-red-400 py-[3px] px-[5px]  rounded-[10px] border border-solid border-black p-2">Reject</button>
                       </td>                      
                     </tr>
                   ))
@@ -168,11 +168,11 @@ const DocumentDetails = () => {
       )}
     </div>
 
-      <div style={{'display':display}} className="absolute top-[70px] right-[60px] grid grid-rows-2 bg-gray-500 w-[400px] h-[120px] p-[20px]">
+      <div style={{'display':display}} className="absolute top-[110px] right-[60px] grid grid-rows-2 bg-gray-500 w-[400px] h-[120px] p-[20px]">
         <input type="text" onClick={(event)=>{setComment(event.target.value)}} placeholder="Add comment here" className="w-full h-[30px] border border-solid border-black border-2 pl-2"/>
         <div className="flex items-center justify-center">
-        <button onClick={rejectComment} className=" bg-red-400 w-[180px] h-[30px]">Reject</button>
-        <button onClick={rejectCancel} className=" bg-red-400 w-[180px] h-[30px] ml-[5px]">Cancel</button>
+        <button onClick={rejectComment} className=" bg-red-400 w-[180px] h-[30px] rounded-[10px] border border-solid border-black">Reject</button>
+        <button onClick={rejectCancel} className=" bg-red-400 w-[180px] h-[30px] ml-[5px] rounded-[10px] border border-solid border-black">Cancel</button>
         </div>
       </div>
 
