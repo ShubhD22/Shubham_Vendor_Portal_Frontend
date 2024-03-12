@@ -87,7 +87,8 @@ const DocumentDetails = () => {
     <div className="container mx-auto my-8">
       {vendorDetails ? (
         <>
-          <h1 className="text-2xl font-bold mb-4">Vendor Details</h1>
+        <p className="border-2 border-blue-500 p-4 w-1/2">
+          <h1 className="text-2xl font-bold mb-4 underline">Vendor Details</h1>
           <p>
             <strong>Vendor ID:</strong> {vendorDetails.id}
           </p>
@@ -103,9 +104,10 @@ const DocumentDetails = () => {
           <p>
             <strong>Phone Number:</strong> {vendorDetails.phoneNumber}
           </p>
+          </p>
 
         
-          <h2 className="text-2xl font-bold mt-8 mb-4">Document Details</h2>
+          <h2 className="text-2xl font-bold mt-8 mb-4 underline">Document Details</h2>
           <table className="min-w-full">
             <thead>
               <tr>
@@ -165,7 +167,7 @@ const DocumentDetails = () => {
       )}
     </div>
 
-      <div style={{'display':display}} className="absolute top-[480px] right-[430px] grid grid-rows-2 bg-gray-500 w-[400px] h-[120px] p-[20px]">
+      <div style={{'display':display}} className="absolute top-[400px] right-[480px] grid grid-rows-2 bg-gray-500 w-[400px] h-[120px] p-[20px]">
         <input type="text" onClick={(event)=>{setComment(event.target.value)}} placeholder="Add comment here" className="w-full h-[30px] border border-solid border-black border-2 pl-2"/>
         <div className="flex items-center justify-center">
         <button onClick={rejectComment} className=" bg-red-400 w-[180px] h-[30px]">Reject</button>
