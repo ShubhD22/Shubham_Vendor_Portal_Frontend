@@ -14,9 +14,9 @@ export default function RFP() {
           `${process.env.REACT_APP_API_URL}/Vendor/${sid}`
         );
 
-        const documentVerifiedValues = vendorCatRes.data.documentVerified.split('|');
-        const isAnyValueFalse = documentVerifiedValues.every(value => value === "True");
-        if(!isAnyValueFalse) navigate('/vendor/upload-document');
+        // const documentVerifiedValues = vendorCatRes.data.documentVerified.split('|');
+        // const isAnyValueFalse = documentVerifiedValues.every(value => value === "True");
+        // if(!isAnyValueFalse) navigate('/vendor/upload-document');
 
         const catId = vendorCatRes.data.vendorCategory.id;
         const rfpCatRes = await axios.get(

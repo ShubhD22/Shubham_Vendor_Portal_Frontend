@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Sidebar({
@@ -7,6 +8,24 @@ export default function Sidebar({
   menuItems,
 }) {
   const [openMenus, setOpenMenus] = useState([]);
+  const [verifyVendor,setVerify] = useState(false);
+
+  const getVendor = async()=>{
+    const id = sessionStorage.getItem('sid');
+    console.log(id)
+;
+    try{
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/Vendor/${id}`
+      );
+      console.log(response.data);
+      setVerify(response.data.isVerified);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
 
   const toggleMenu = (index) => {
     setSelectedItem(index);
@@ -18,6 +37,10 @@ export default function Sidebar({
   };
 
   const [selectedItem, setSelectedItem] = useState(null);
+
+  useEffect(()=>{
+    getVendor();
+  },[]);
 
   return (
     <div>
@@ -62,7 +85,7 @@ export default function Sidebar({
           {menuItems.map((menuItem, index) => (
             <li
               key={index}
-              className={`group menuSidebar `} // You can adjust the number to change the number of colors
+              className={`group menuSidebar `} 
             >
              <Link
                 to={menuItem.link}
@@ -87,14 +110,30 @@ export default function Sidebar({
               {menuItem.subItems && openMenus[index] && (
                 <ul className="pl-7 mt-2">
                   {menuItem.subItems.map((subItem, subIndex) => (
-                    <li key={subIndex} className="mb-4">
-                      <Link
-                        to={subItem.link}
-                        className="text-gray-900 text-sm flex items-center hover:text-[#f84525] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3"
-                      >
-                        {subItem.text}
-                      </Link>
-                    </li>
+                    (sessionStorage.getItem("roles")!="Vendor"|| (sessionStorage.getItem("roles")=="Vendor" && verifyVendor))? <>
+                      <li key={subIndex} className="mb-4">
+                        <Link
+                          to={subItem.link}
+                          className="text-gray-900 text-sm flex items-center hover:text-[#f84525] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3"
+                        >
+                          {subItem.text}
+                        </Link>
+                      </li>
+                    </>:
+                    subItem.text == "Upload Documents"?
+                    <>
+                      <li key={subIndex} className="mb-4">
+                          <Link
+                            to={subItem.link}
+                            className="text-gray-900 text-sm flex items-center hover:text-[#f84525] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3"
+                          >
+                            {subItem.text}
+                          </Link>
+                        </li>                      
+                    </>
+                    :
+                    <></>
+
                   ))}
                 </ul>
               )}
