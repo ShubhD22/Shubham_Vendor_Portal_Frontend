@@ -43,6 +43,11 @@ import UploadDocument from "./pages/vendor/UploadDocument";
 import ProjectHeadDash from "./pages/projecthead/ProjectHeadDash";
 import ProjectHeadProfile from "./pages/projecthead/ProjectHeadProfile";
 import AssignedProject from "./pages/projecthead/AssignedProject";
+import Carousel from "./components/Carousel";
+import LandingPage from "./components/LandingPage";
+import AllBanner from "./pages/admin/AllBanner";
+import AddBanner from "./pages/admin/AddBanner";
+import DeleteBanner from "./pages/admin/DeleteBanner";
 
 const App = () => {
   const [userRole, setuserRole] = useState(sessionStorage.getItem("roles"));
@@ -54,11 +59,15 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/test1" element={<Carousel/>} />
+        <Route path="/test" element={<LandingPage/>} />
+
+       
 
         <Route path="/admin" element={<AdminDashboard />}>
           <Route index element={<AdminDash />} />
           <Route path="dashboard" index element={<AdminDash />} />
-          <Route path="allusers" element={<Users />} />
+          <Route path="all-users" element={<Users />} />
           <Route path="create-vendor" element={<AddVendor />} />
           <Route path="create-project-head" element={<AddProjectHead />} />
           <Route path="add-vendor-category" element={<AddVendorCategory />} />
@@ -76,6 +85,9 @@ const App = () => {
           <Route path="product-category" element={<ProductCategory/>}/>
           <Route path="vendor-verfication" element={<VendorVerification/>}/>
           <Route path="document-verification/:id" element={<DocumentDetails/>} />
+          <Route path="allBanners" element={<AllBanner/>}></Route>
+          <Route path="addBanner" element={<AddBanner/>}></Route>
+          <Route path="deleteBanner" element={<DeleteBanner/>}></Route>
         </Route>
 
         <Route path="/vendor" element={<VendorDashboard />}>

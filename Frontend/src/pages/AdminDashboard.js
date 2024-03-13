@@ -90,12 +90,13 @@ export default function AdminDashboard() {
     },
 
     {
-      text: "Dummy Item 3 ",
+      text: "Banner ",
       icon: "ri-file-copy-2-line",
       link: "#",
       subItems: [
-        { text: "All RFP", link: "rfp" },
-        { text: "Create RFP", link: "create-rfp" },
+        { text: "All Banner", link: "allBanners"  },
+        { text: "Add Banner", link: "addBanner" },
+        { text: "Delete Banner", link: "deleteBanner" },
       ],
       bgColor: "bg-cyan-900", 
     },
